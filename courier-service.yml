@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: courier-service
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/courier_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+logitrack:
+  security:
+    issuer: logitrack-security
+    audience: logitrack-api
+    access-token-ttl: 15m
+    clock-skew: 60s
+    public-key-location: ${JWT_PUBLIC_KEY_LOCATION:classpath:certs/public.pem}

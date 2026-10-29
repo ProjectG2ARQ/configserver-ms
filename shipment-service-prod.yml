@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://mysql-shipment:3306/shipment_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC}
+  jpa:
+    show-sql: false
+
+clients:
+  courier:
+    base-url: ${COURIER_SERVICE_URL:http://courier-service:8081}
+  security:
+    base-url: ${SECURITY_SERVICE_URL:http://security-service:8082}
+
+logging:
+  level:
+    root: WARN
+    com.logitrack: INFO
+
+logitrack:
+  config:
+    marker: shipment-service-prod

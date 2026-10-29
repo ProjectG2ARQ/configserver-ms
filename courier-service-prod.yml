@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://mysql-courier:3306/courier_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC}
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    root: WARN
+    com.logitrack: INFO
+
+logitrack:
+  config:
+    marker: courier-service-prod
