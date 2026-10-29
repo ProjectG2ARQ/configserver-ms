@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    com.logitrack: DEBUG
+
+logitrack:
+  config:
+    marker: courier-service-dev
