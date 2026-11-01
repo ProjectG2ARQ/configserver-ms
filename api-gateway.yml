@@ -1,0 +1,41 @@
+server:
+  port: 8066
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8065/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: security-service-route
+          uri: lb://SECURITY-SERVICE
+          predicates:
+            - Path=/applications/api-security/**
+          filters:
+            - RewritePath=/applications/api-security/?(?<remaining>.*), /${remaining}
+
+        - id: shipment-service-route
+          uri: lb://SHIPMENT-SERVICE
+          predicates:
+            - Path=/applications/api-shipment/**
+          filters:
+            - RewritePath=/applications/api-shipment/?(?<remaining>.*), /${remaining}
+
+        - id: courier-service-route
+          uri: lb://COURIER-SERVICE
+          predicates:
+            - Path=/applications/api-courier/**
+          filters:
+            - RewritePath=/applications/api-courier/?(?<remaining>.*), /${remaining}
