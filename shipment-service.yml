@@ -28,3 +28,8 @@ logitrack:
     access-token-ttl: 15m
     clock-skew: 60s
     public-key-location: ${JWT_PUBLIC_KEY_LOCATION:classpath:certs/public.pem}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8065/eureka/}
