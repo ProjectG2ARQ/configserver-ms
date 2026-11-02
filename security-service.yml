@@ -21,3 +21,7 @@ logitrack:
     clock-skew: 60s
     private-key-location: ${JWT_PRIVATE_KEY_LOCATION:classpath:certs/private.pem}
     public-key-location: ${JWT_PUBLIC_KEY_LOCATION:classpath:certs/public.pem}
+  eureka:
+    client:
+      service-url:
+        defaultZone: ${EUREKA_SERVER_URL:http://localhost:8065/eureka/}
